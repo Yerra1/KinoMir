@@ -5,57 +5,56 @@
     <title>Регистрация</title>
     <link href="cinemaPage.css" rel="stylesheet">
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">🎬 КиноМир</div>
-            <nav>
-                <a class="butt" href="index.html">Главная</a>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <div class="logo">🎬 КиноМир</div>
+        <nav>
+            <a class="butt" href="index.html">Главная</a>
+        </nav>
+    </div>
+</header>
 
-    <main>
-        <h1>Регистрация</h1>
-        <form class="auth-form">
-            <label>Имя пользователя</label>
-            <input type="text" placeholder="Введите имя" required>
+<main>
+    <h1>Регистрация</h1>
+    <form class="auth-form">
+        <label>Имя пользователя</label>
+        <input type="text" placeholder="Введите имя" required>
 
-            <label>Email</label>
-            <input type="email" placeholder="Введите email" required>
+        <label>Email</label>
+        <input type="email" placeholder="Введите email" required>
 
-            <label>Пароль</label>
-            <input type="password" placeholder="Введите пароль" required>
+        <label>Пароль</label>
+        <input type="password" placeholder="Введите пароль" required>
 
-            <button type="submit" class="butt">Зарегистрироваться</button>
+        <button type="submit" class="butt">Зарегистрироваться</button>
+        <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+    </form>
+</main>
 
-            <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
-        </form>
-    </main>
+<script>
+document.querySelector(".auth-form").addEventListener("submit", function(e){
+    e.preventDefault();
 
-    <script>
-        document.querySelector(".auth-form").addEventListener("submit", function(e) {
-            e.preventDefault();
+    const username = document.querySelector('input[type="text"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
 
-            const username = document.querySelector('input[type="text"]').value;
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
+    // Получаем пользователей из localStorage
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
 
-            let users = JSON.parse(localStorage.getItem("users") || "[]");
+    if(users.find(u => u.email === email)) {
+        alert("Этот email уже зарегистрирован");
+        return;
+    }
 
-            if (users.find(u => u.email === email)) {
-                alert("Этот email уже зарегистрирован");
-                return;
-            }
+    // Добавляем нового пользователя
+    users.push({username, email, password});
+    localStorage.setItem("users", JSON.stringify(users));
 
-            users.push({ username, email, password });
-
-            localStorage.setItem("users", JSON.stringify(users));
-            window.location.href = "login.html";
-        });
-    </script>
-
+    alert("Регистрация успешна!");
+    window.location.href = "login.html";
+});
+</script>
 </body>
 </html>
-
