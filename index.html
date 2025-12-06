@@ -76,7 +76,7 @@ const panel = document.getElementById("userPanel");
 if(user){
     panel.innerHTML = `
         <span>Здравствуйте, <b>${user}</b></span>
-        <button id="logoutBtn">Выйти</button>`;
+        <button id="logoutBtn" class="top-bar-button">Выйти</button>`; // добавлен класс
 
     document.getElementById("logoutBtn").onclick = function(){
         localStorage.removeItem("loggedInUser");
@@ -84,9 +84,8 @@ if(user){
     };
 } else {
     panel.innerHTML = `
-    panel.innerHTML = `
-    <a class="top-bar-button" href="login.html">Войти</a>
-    <a class="top-bar-button" href="register.html">Регистрация</a>`;
+        <a class="top-bar-button" href="login.html">Войти</a>
+        <a class="top-bar-button" href="register.html">Регистрация</a>`; // исправлено
 }
 </script>
 
@@ -112,4 +111,5 @@ filter.addEventListener("change", () => {
 
 </body>
 </html>
+
 
