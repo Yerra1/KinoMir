@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link href="cinemaPage.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">🎬 КиноМир</div>
+            <nav>
+                <a class="butt" href="cinemahome.html">Главная</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Регистрация</h1>
+        <form class="auth-form">
+            <label>Имя пользователя</label>
+            <input type="text" placeholder="Введите имя" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="Введите email" required>
+
+            <label>Пароль</label>
+            <input type="password" placeholder="Введите пароль" required>
+
+            <button type="submit" class="butt">Зарегистрироваться</button>
+
+            <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        </form>
+    </main>
+
+    <script>
+        document.querySelector(".auth-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const username = document.querySelector('input[type="text"]').value;
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+
+            let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+            if (users.find(u => u.email === email)) {
+                alert("Этот email уже зарегистрирован");
+                return;
+            }
+
+            users.push({ username, email, password });
+
+            localStorage.setItem("users", JSON.stringify(users));
+            window.location.href = "login.html";
+        });
+    </script>
+
+</body>
+</html>

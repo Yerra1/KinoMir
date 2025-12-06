@@ -1,0 +1,135 @@
+body, input, textarea, button, a{
+    cursor: url("cursor_icon_215900.png"), auto;
+}
+
+body {
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    color: #e0e0e0;
+    font-family: "Poppins", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111;
+    padding: 15px 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ff006a;
+    text-shadow: 0 0 15px #ff006a;
+}
+
+.top-bar-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.top-bar-button {
+    background-color: #00fff7;
+    color: #0d0d0d;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.top-bar-button:hover {
+    background-color: #ff006a;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+marquee {
+    color: #00fff7;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+h1 {
+    color: #ff006a;
+    text-shadow: 0 0 80px #ff006a;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    gap: 20px;
+    justify-content: center; 
+}
+
+.movie-grid img {
+    width: 380px;
+    height: 570px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0px 50px #470021;
+    border-radius: 15px;
+    
+}
+
+.movie-grid img:hover {
+    transform: scale(1.05);
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+#userPanel{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #00fff7;
+    font-weight: bold;
+    z-index: 200;
+}
+
+footer {
+    text-align: center;
+    background-color: #181818;
+    padding: 15px;
+    color: #aaa;
+    margin-top: 40px;
+}
+
+#filter {
+    background: #111;
+    color: #00fff7;
+    border: 2px solid #00fff7;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    transition: 0.2s;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0,255,247,0.3);
+}
+
+#filter:hover {
+    border-color: #ff006a;
+    color: #ff006a;
+    box-shadow: 0 0 20px #ff006a;
+    transform: scale(1.05);
+}
+
+#filter:focus {
+    border-color: #ff006a;
+    box-shadow: 0 0 30px #ff006a;
+}
+
