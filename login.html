@@ -6,51 +6,48 @@
     <link href="cinemaPage.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">🎬 КиноМир</div>
-            <nav>
-                <a class="butt" href="index.html">Главная</a>
-            </nav>
-        </div>
-    </header>
+<header>
+    <div class="container">
+        <div class="logo">🎬 КиноМир</div>
+        <nav>
+            <a class="butt" href="index.html">Главная</a>
+        </nav>
+    </div>
+</header>
 
-    <main>
-        <h1>Вход</h1>
-        <form class="auth-form">
-            <label>Email</label>
-            <input type="email" placeholder="Введите email" required>
+<main>
+    <h1>Вход</h1>
+    <form class="auth-form">
+        <label>Email</label>
+        <input type="email" placeholder="Введите email" required>
 
-            <label>Пароль</label>
-            <input type="password" placeholder="Введите пароль" required>
+        <label>Пароль</label>
+        <input type="password" placeholder="Введите пароль" required>
 
-            <button type="submit" class="butt">Войти</button>
+        <button type="submit" class="butt">Войти</button>
+        <p>Нет аккаунта? <a href="register.html">Регистрация</a></p>
+    </form>
+</main>
 
-            <p>Нет аккаунта? <a href="register.html">Регистрация</a></p>
-        </form>
-    </main>
+<script>
+document.querySelector(".auth-form").addEventListener("submit", function(e){
+    e.preventDefault();
 
-    <script>
-        document.querySelector(".auth-form").addEventListener("submit", function(e) {
-            e.preventDefault();
+    const email = document.querySelector('input[type="email"]').value;
+    const password = document.querySelector('input[type="password"]').value;
 
-            const email = document.querySelector('input[type="email"]').value;
-            const password = document.querySelector('input[type="password"]').value;
+    let users = JSON.parse(localStorage.getItem("users") || "[]");
+    let found = users.find(u => u.email === email && u.password === password);
 
-            let users = JSON.parse(localStorage.getItem("users") || "[]");
+    if(!found) {
+        alert("Неверный email или пароль");
+        return;
+    }
 
-            let found = users.find(u => u.email === email && u.password === password);
-
-            if (!found) {
-                alert("Неверный email или пароль");
-                return;
-            }
-
-            localStorage.setItem("loggedInUser", found.username);
-            window.location.href = "index.html";
-        });
-    </script>
-
+    // Сохраняем логин текущего пользователя
+    localStorage.setItem("loggedInUser", found.username);
+    window.location.href = "index.html";
+});
+</script>
 </body>
 </html>
-
