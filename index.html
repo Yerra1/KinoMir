@@ -4,95 +4,33 @@
     <meta charset="UTF-8">
     <title>КиноМир — Главная</title>
     <link href="cinemahome.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
-
 <body>
-    <div class="top-bar">
-        <div class="logo">🎬 КиноМир</div>
-        <div id="userPanel" class="top-bar-buttons"></div>
-    </div>
-
-    <h1>Добро пожаловать</h1>
-    <hr color="#00fff7">
-
-    <marquee direction="left" scrollamount="10">🎞️ Выберите фильм 🎥</marquee>
-
-<div style="margin: 20px auto;">
-    <select id="filter">
-        <option value="all">Все жанры</option>
-        <option value="action">Боевик</option>
-        <option value="fantasy">Фантастика</option>
-        <option value="romance">Романтика</option>
-        <option value="drama">Драма</option>
-        <option value="comedy">Комедия</option>
-        <option value="thriller">Триллер</option>
-        <option value="horror">Ужасы</option>
-    </select>
+<div class="top-bar">
+    <div class="logo">🎬 КиноМир</div>
+    <div id="userPanel" class="top-bar-buttons"></div>
 </div>
 
-<div class="movie-grid" id="movieGrid">
-    <a data-aos="zoom-in" href="interstellar.html" data-genre="fantasy,drama"><img src="https://cdn1.ozone.ru/s3/multimedia-p/6173994253.jpg"></a>
-    <a data-aos="zoom-in" href="avengersfinal.html" data-genre="action,fantasy"><img src="https://image.tmdb.org/t/p/original/uQzIsoNROr5uIaLBOciKWzuLx7Q.jpg"></a>
-    <a data-aos="zoom-in" href="matrix.html" data-genre="action,fantasy"><img src="https://m.media-amazon.com/images/I/51EG732BV3L._AC_UF894,1000_QL80_.jpg"></a>
-    <a data-aos="zoom-in" href="fightclub.html" data-genre="drama,thriller"><img src="https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg"></a>
-    <a data-aos="zoom-in" href="500daysofsummer.html" data-genre="romance,comedy"><img src="https://i.etsystatic.com/6285100/r/il/291b7f/6346625443/il_570xN.6346625443_2kdo.jpg"></a>
-    <a data-aos="zoom-in" href="avatar.html" data-genre="fantasy,action"><img src="https://m.media-amazon.com/images/I/61OUGpUfAyL._AC_UF894,1000_QL80_.jpg"></a>
-    <a data-aos="zoom-in" href="basterd.html" data-genre="action,drama"><img src="https://image.tmdb.org/t/p/original/q33bLgO3SP69mUdfWktG6LJGU27.jpg"></a>
-    <a data-aos="zoom-in" href="lalalend.html" data-genre="romance"><img src="https://image.tmdb.org/t/p/original/3mbeAvLnFo9N74vlexb4DuUcuKH.jpg"></a>
-    <a data-aos="zoom-in" href="fnaf.html" data-genre="horror"><img src="https://theposterdepot.com/cdn/shop/files/fivenightsatfreddys0820202301_ba87226d-acdb-412d-95d1-8ad0f072073e_1200x1200.jpg?v=1706658976"></a>
-</div>
-
-<hr color="#00fff7">
-
-<footer><p>© 2025 КиноМир. Жумабек Ерасыл</p></footer>
+<h1>Добро пожаловать</h1>
 
 <script>
-    const user = localStorage.getItem("loggedInUser");
-    const panel = document.getElementById("userPanel");
+const user = localStorage.getItem("loggedInUser");
+const panel = document.getElementById("userPanel");
 
-    if (user) {
-        panel.innerHTML = `
-            <span>Здравствуйте, <b>${user}</b></span>
-            <button id="logoutBtn" class="top-bar-button">Выйти</button>`;
+if(user){
+    panel.innerHTML = `
+        <span>Здравствуйте, <b>${user}</b></span>
+        <button id="logoutBtn">Выйти</button>`;
 
-        document.getElementById("logoutBtn").onclick = function() {
-            localStorage.removeItem("loggedInUser");
-            window.location.reload();
-        };
-
-    } else {
-        panel.innerHTML = `
-            <a class="top-bar-button" href="login.html">Войти</a>
-            <a class="top-bar-button" href="register.html">Регистрация</a>`;
-    }
+    document.getElementById("logoutBtn").onclick = function(){
+        localStorage.removeItem("loggedInUser");
+        window.location.reload();
+    };
+} else {
+    panel.innerHTML = `
+        <a href="login.html">Войти</a>
+        <a href="register.html">Регистрация</a>`;
+}
 </script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
-
-<script>
-const filter = document.getElementById("filter");
-const movies = document.querySelectorAll(".movie-grid a");
-
-filter.addEventListener("change", () => {
-    const selectedGenre = filter.value;
-
-    movies.forEach(movie => {
-        const movieGenres = movie.dataset.genre.split(",").map(g => g.trim());
-        if (selectedGenre === "all" || movieGenres.includes(selectedGenre)) {
-            movie.style.display = ""; 
-        } else {
-            movie.style.display = "none";
-        }
-    });
-    
-    setTimeout(() => {
-        AOS.refresh(); 
-    }, 100);
-});
-</script>
-
-
 </body>
 </html>
