@@ -84,8 +84,9 @@ if(user){
     };
 } else {
     panel.innerHTML = `
-        <a href="login.html">Войти</a>
-        <a href="register.html">Регистрация</a>`;
+    panel.innerHTML = `
+    <a class="top-bar-button" href="login.html">Войти</a>
+    <a class="top-bar-button" href="register.html">Регистрация</a>`;
 }
 </script>
 
@@ -111,3 +112,4 @@ filter.addEventListener("change", () => {
 
 </body>
 </html>
+
