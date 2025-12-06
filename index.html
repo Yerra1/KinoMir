@@ -76,7 +76,7 @@ const panel = document.getElementById("userPanel");
 if(user){
     panel.innerHTML = `
         <span>Здравствуйте, <b>${user}</b></span>
-        <button id="logoutBtn" class="top-bar-button">Выйти</button>`; // добавлен класс
+        <button id="logoutBtn" class="top-bar-button">Выйти</button>`;
 
     document.getElementById("logoutBtn").onclick = function(){
         localStorage.removeItem("loggedInUser");
@@ -85,11 +85,11 @@ if(user){
 } else {
     panel.innerHTML = `
         <a class="top-bar-button" href="login.html">Войти</a>
-        <a class="top-bar-button" href="register.html">Регистрация</a>`; // исправлено
+        <a class="top-bar-button" href="register.html">Регистрация</a>`;
 }
 </script>
 
-
+<!-- Скрипт фильтра -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init();
@@ -111,5 +111,3 @@ filter.addEventListener("change", () => {
 
 </body>
 </html>
-
-
